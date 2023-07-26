@@ -1,7 +1,10 @@
-import yaml
-import markdown
 import os
+from datetime import datetime
+
 from jinja2 import Environment, FileSystemLoader
+import markdown
+import yaml
+
 
 
 def parse_md_file(file_path):
@@ -49,25 +52,48 @@ def render_template(template_path, output_path, variables):
         f.write(output)
 
 
-# Let's test these functions with our first_post.md
-file_path = 'content/first_post.md'
-front_matter, body_md = parse_md_file(file_path)
-body_html = convert_md_to_html(body_md)
+def generate_site():
+    """
+    This function generates the entire site by converting each Markdown file to HTML
+    and creating an index.html file that lists all the posts.
+    """
+    # Get a list of all the Markdown files
+    md_files = os.listdir('content')
 
-print(front_matter)
-print(body_html)
+    # This list will hold the metadata for all posts
+    posts = []
 
-# The path to our template file
-template_path = 'post_template.html'
+    # Convert each Markdown file to HTML
+    for md_file in md_files:
+        # Parse the Markdown file
+        front_matter, body_md = parse_md_file(f'content/{md_file}')
 
-# The path to the output HTML file
-output_path = 'output/first_post.html'
+        # Convert the body to HTML
+        body_html = convert_md_to_html(body_md)
 
-# The variables to insert into the template
-variables = {
-    'title': front_matter['title'],
-    'content': body_html,
-}
+        # The URL of the post is the filename with .md replaced by .html
+        url = md_file.replace('.md', '.html')
 
-# Render the template and write the output
-render_template(template_path, output_path, variables)
+        # Add the post's metadata to the list of posts
+        posts.append({
+            'title': front_matter['title'],
+            'url': url,
+            'date': front_matter['date'],
+
+        })
+
+        # Sort posts by date & time
+        posts.sort(key=lambda post: post['date'], reverse=True)
+
+        # Write the HTML to a new file
+        render_template('post_template.html', f'output/{url}', {
+            'title': front_matter['title'],
+            'content': body_html,
+        })
+
+    # Render the homepage template with the list of posts
+    render_template('index_template.html', 'output/index.html', {'posts': posts})
+
+
+
+generate_site()
