@@ -1,8 +1,10 @@
 import os
-from datetime import datetime
+from pprint import pprint
+import re
 
 from jinja2 import Environment, FileSystemLoader
 import markdown
+from markdown.extensions.wikilinks import WikiLinkExtension
 import yaml
 
 
@@ -30,7 +32,7 @@ def convert_md_to_html(body_md):
     """
     This function takes the body of a markdown file and converts it to HTML.
     """
-    body_html = markdown.markdown(body_md)
+    body_html = markdown.markdown(body_md, extensions=[WikiLinkExtension(base_url='./', end_url='.html')])
     return body_html
 
 def render_template(template_path, output_path, variables):
@@ -68,28 +70,46 @@ def generate_site():
         # Parse the Markdown file
         front_matter, body_md = parse_md_file(f'content/{md_file}')
 
-        # Convert the body to HTML
-        body_html = convert_md_to_html(body_md)
+        # Find all the wiki-style links in the Markdown text
+        links = re.findall(r'\[\[([^\]]+)\]\]', body_md)
 
         # The URL of the post is the filename with .md replaced by .html
         url = md_file.replace('.md', '.html')
 
-        # Add the post's metadata to the list of posts
-        posts.append({
+        # Create the post metadata
+        post = {
             'title': front_matter['title'],
             'url': url,
             'date': front_matter['date'],
+            'links': links,
+            'body_md': body_md,
+        }
+  
+        # Add the post's metadata to the list of posts
+        posts.append(post)
 
-        })
+    for post in posts:
+        post['backlinks'] = [other_post for other_post in posts if post['title'] in other_post['links']]
 
-        # Sort posts by date & time
-        posts.sort(key=lambda post: post['date'], reverse=True)
+
+     # Convert each Markdown file to HTML
+    for post in posts:
+        body_html = convert_md_to_html(post['body_md'])
 
         # Write the HTML to a new file
-        render_template('post_template.html', f'output/{url}', {
-            'title': front_matter['title'],
+        render_template('post_template.html', f'output/{post["url"]}', {
+            'title': post['title'],
             'content': body_html,
+            'backlinks': post['backlinks'],  # Pass the backlinks to the template
         })
+
+
+    # Sort posts by date & time
+    posts.sort(key=lambda post: post['date'], reverse=True)
+
+    for post in posts:
+        pprint(post)
+
 
     # Render the homepage template with the list of posts
     render_template('index_template.html', 'output/index.html', {'posts': posts})
