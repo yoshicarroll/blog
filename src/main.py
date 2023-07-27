@@ -32,7 +32,7 @@ def convert_md_to_html(body_md):
     """
     This function takes the body of a markdown file and converts it to HTML.
     """
-    body_html = markdown.markdown(body_md, extensions=[WikiLinkExtension(base_url='./', end_url='.html')])
+    body_html = markdown.markdown(body_md, extensions=['fenced_code', WikiLinkExtension(base_url='./', end_url='.html')])
     return body_html
 
 def render_template(template_path, output_path, variables):
