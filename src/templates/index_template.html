@@ -11,8 +11,13 @@
     <main>
         <ul>
             {% for post in posts %}
-            <li><a href="{{ post.slug }}/">{{ post.title }}</a></li>
-            {% endfor %}
+            <li>
+                <a href="{{ post.slug }}/">{{ post.title }}</a>
+                <p>{{ post.date.strftime('%B %d, %Y') }}</p>  <!-- Display the date -->
+                <p>{{ post.summary }}...</p>  <!-- Display the summary -->
+            </li>
+        {% endfor %}
+        
         </ul>
     </main>
     <footer>

@@ -7,7 +7,9 @@ import unicodedata
 from jinja2 import Environment, FileSystemLoader
 import markdown
 from markdown.extensions.wikilinks import WikiLinkExtension
+from markdown_plain_text.extention import convert_to_plain_text
 import yaml
+
 
 def slugify(value):
     """
@@ -116,8 +118,9 @@ def generate_site():
             'links': links,
             'body_md': body_md,
             'slug': slugify(front_matter['title']),
+            'summary': ' '.join(convert_to_plain_text(body_md).split(' ')[:50]),  # Take the first 50 words as the summary
         }
-  
+
         # Add the post's metadata to the list of posts
         posts.append(post)
 
