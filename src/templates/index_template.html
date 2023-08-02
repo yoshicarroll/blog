@@ -12,10 +12,16 @@
         <ul>
             {% for post in posts %}
             <li>
-                <a href="{{ post.slug }}/">{{ post.title }}</a>
-                <p>{{ post.date.strftime('%B %d, %Y') }}</p>  <!-- Display the date -->
-                <p>{{ post.summary }}...</p>  <!-- Display the summary -->
-            </li>
+                <div class="date">
+                    <span class="day">{{ post.date.strftime('%d') }}</span>                    
+                    <span class="month">{{ post.date.strftime('%B') }}</span>
+                    <span class="year">{{ post.date.strftime('%Y') }}</span>
+                </div>
+                <div>
+                    <h2><a href="{{ post.slug }}/">{{ post.title }}</a></h2>
+                    <p>{{ post.summary }}...</p>
+                </div>
+            </li>            
         {% endfor %}
         
         </ul>

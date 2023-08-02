@@ -20,6 +20,44 @@ main {
   grid-column: 2 / 3;
 }
 
+main ul {
+  display: grid;
+  grid-template-columns: min-content 2fr;
+  gap: 2em;
+  list-style-type: none; /* Removes default bullet points */
+}
+
+main li {
+  display: contents; /* Allows li contents to participate in grid layout */
+}
+
+.date .month {
+  font-size: 1.2em;
+  font-weight: 200;
+  font-variant: small-caps;
+  /* display: block; */
+  line-height: 1;
+}
+
+.date .day {
+  font-size: 7em;
+  font-weight: bold;
+  display: block;
+  line-height: 0.9;
+  padding: 0;
+  margin-left: -0.04em;
+  margin-top: -0.05em;
+  margin-right: .1em;
+}
+
+.date .year {
+  font-size: 1.2em;
+  font-weight: 200;
+  /* display: block; */
+  line-height: 1;
+}
+
+
 footer {
   grid-column: 2 / 3;
 }
