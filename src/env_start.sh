@@ -1,3 +1,4 @@
 python3 -m venv env
 source env/bin/activate
-pip3 install markdown pyyaml jinja2
+pip install markdown pyyaml jinja2
+pip install -e "git+https://github.com/yoshicarroll/python-markdown-plain-text.git#egg=plain-text-markdown-extention"
