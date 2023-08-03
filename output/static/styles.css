@@ -46,7 +46,7 @@ main {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end; /* This will align month and year to the right */
-  width: 100px; /* Fixed width, adjust to fit largest possible date */
+  width: 56px; /* Fixed width, adjust to fit largest possible date */
 }
 
 .month {
