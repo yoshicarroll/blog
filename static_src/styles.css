@@ -20,42 +20,63 @@ main {
   grid-column: 2 / 3;
 }
 
-main ul {
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Adjust this to set distance between each post container */
+}
+
+.post-container {
   display: grid;
-  grid-template-columns: min-content 2fr;
-  gap: 2em;
-  list-style-type: none; /* Removes default bullet points */
+  grid-template-columns: 1fr 2fr;
+  grid-auto-rows: auto;
+  gap: 14px;
 }
 
-main li {
-  display: contents; /* Allows li contents to participate in grid layout */
+.date-day-container {
+  grid-column: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 9px; /* This will add space between date and day */
 }
 
-.date .month {
-  font-size: 1.2em;
-  font-weight: 200;
-  font-variant: small-caps;
-  /* display: block; */
-  line-height: 1;
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end; /* This will align month and year to the right */
+  width: 100px; /* Fixed width, adjust to fit largest possible date */
 }
 
-.date .day {
-  font-size: 7em;
-  font-weight: bold;
+.month {
   display: block;
-  line-height: 0.9;
-  padding: 0;
-  margin-left: -0.04em;
-  margin-top: -0.05em;
-  margin-right: .1em;
-}
-
-.date .year {
-  font-size: 1.2em;
-  font-weight: 200;
-  /* display: block; */
+  font-variant: small-caps; /* This will apply small caps to the month */
   line-height: 1;
 }
+
+.year {
+  display: block;
+}
+
+.day {
+  font-size: clamp(3.5em, 16vw, 8em);
+  line-height: 0.9; /* Adjusted as per your last message */
+  font-weight: bold; /* This will make the day font bold */
+}
+
+
+.post-details {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.post-details h2 {
+  margin-top: 0.01em; /* This will remove the top margin from the h2 in post-details */
+}
+
+
+
 
 
 footer {
