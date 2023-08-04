@@ -6,8 +6,11 @@ body {
   line-height: 1.6;
   font-size: 18px;
 
+  margin: 0;
+  padding: 0;
+
   display: grid;
-  grid-template-columns: 1fr minmax(auto, 800px) 1fr;
+  grid-template-columns: 1fr minmax(auto, 1000px) 1fr;
   grid-template-rows: auto 1fr auto;
   gap: 20px;
 }
@@ -22,65 +25,78 @@ main {
 
 
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Adjust this to set distance between each post container */
-}
-
-.post-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-auto-rows: auto;
-  gap: 14px;
-}
-
-.date-day-container {
-  grid-column: 1;
-  display: flex;
-  align-items: flex-end;
-  gap: 9px; /* This will add space between date and day */
+  grid-template-columns: auto auto 1fr;
+  gap: 1.2em;
 }
 
 .date {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end; /* This will align month and year to the right */
-  width: 56px; /* Fixed width, adjust to fit largest possible date */
+  align-items: flex-end;
+  align-self: center;
+  font-size: clamp(1em, 2.6vw, 2em);
 }
 
 .month {
-  display: block;
-  font-variant: small-caps; /* This will apply small caps to the month */
-  line-height: 1;
+  font-weight: bold;
 }
 
-.year {
-  display: block;
+.date .month {
+  font-variant: small-caps;
+}
+
+.date .month, .date .year, .day {
+  line-height: 0.9;
+  margin-bottom: 0.2em; /* Adjusts bottom margin */
 }
 
 .day {
-  font-size: clamp(3.5em, 16vw, 8em);
-  line-height: 0.9; /* Adjusted as per your last message */
-  font-weight: bold; /* This will make the day font bold */
-}
-
-
-.post-details {
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  font-size: clamp(2em, 10vw, 8em);
+  font-weight: bold;
+  margin-bottom: 0;
+  align-self: center;
+  text-align: center;
+  padding-bottom: .1em;
 }
 
 .post-details h2 {
-  margin-top: 0.01em; /* This will remove the top margin from the h2 in post-details */
+  margin-bottom: 0.5em;
 }
-
-
-
-
 
 footer {
   grid-column: 2 / 3;
+}
+
+/* When the browser width is less than 500px */
+@media (max-width: 500px) {
+  main {
+    grid-template-columns: auto min-content;
+    row-gap: 0;
+    column-gap: 0.7em;
+  }
+
+  .day {
+    font-size: 3em;
+  }
+
+  /* .date {
+    align-items: start;
+    flex-direction: row;
+  } */
+
+  .year {
+    margin-left: 0.2em;
+  }
+
+  .post-details h2 {
+    margin-top: .3em;
+  }
+
+  .post-details {
+    grid-column-end: span 2;
+    margin-bottom: 1.5em;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -125,11 +141,12 @@ li {
 }
 
 a {
-  color: #3498db;
+  color: inherit;
+  text-decoration-color: orange;
 }
 
 a:hover {
-  color: #2980b9;
+  color: rgb(222, 145, 2);
 }
 
 strong {

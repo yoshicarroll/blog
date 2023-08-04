@@ -8,20 +8,17 @@
     <header>
         <h1>Yoshi Carroll</h1>
     </header>
+    
     <main>
         {% for post in posts %}
-            <div class="post-container">
-                <div class="date-day-container">
-                    <div class="date">
-                        <div class="month">{{ post.date.strftime('%B') }}</div>
-                        <div class="year">{{ post.date.strftime('%Y') }}</div>
-                    </div>
-                    <div class="day">{{ post.date.strftime('%d') }}</div>
-                </div>
-                <div class="post-details">
-                    <h2><a href="{{ post.slug }}/">{{ post.title }}</a></h2>
-                    <p>{{ post.summary }}...</p>
-                </div>
+            <div class="date">
+                <div class="month">{{ post.date.strftime('%B') }}</div>
+                <div class="year">{{ post.date.strftime('%Y') }}</div>
+            </div>
+            <div class="day">{{ post.date.strftime('%d') }}</div>
+            <div class="post-details">
+                <h2><a href="{{ post.slug }}/">{{ post.title }}</a></h2>
+                <p>{{ post.summary }}...</p>
             </div>
         {% endfor %}
     </main>
