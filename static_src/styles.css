@@ -27,7 +27,7 @@ main {
 main {
   display: grid;
   grid-template-columns: auto auto 1fr;
-  gap: 1.2em;
+  gap: 1em;
 }
 
 .date {
