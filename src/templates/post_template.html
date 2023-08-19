@@ -6,9 +6,8 @@
 </head>
 <body>
     <header>
-        <h1>Yoshi Carroll</h1>
         <nav>
-            <a href="/">Home</a>
+            <h1><a href="/">Yoshi Carroll</a></h1>            
         </nav>
     </header>
     <main>
@@ -18,7 +17,7 @@
         </article>
         {% if backlinks %}
         <section>
-            <h2>Backlinks</h2>
+            <h6>Backlinks</h6>
             <ul>
                 {% for backlink in backlinks %}
                 <li><a href="/{{ backlink.slug }}/">{{ backlink.title }}</a></li>

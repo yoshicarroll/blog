@@ -15,6 +15,12 @@ body {
   gap: 20px;
 }
 
+main {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 1em;
+}
+
 header {
   grid-column: 2 / 3;
 }
@@ -23,11 +29,8 @@ main {
   grid-column: 2 / 3;
 }
 
-
-main {
-  display: grid;
-  grid-template-columns: auto auto 1fr;
-  gap: 1em;
+main article {
+  grid-column: span 3;
 }
 
 .date {
@@ -173,6 +176,10 @@ pre {
 blockquote {
   color: #666;
   margin: 0;
-  padding-left: 3em;
+  padding-left: 1em;
   border-left: 0.5em #eee solid;
+}
+
+nav h1 a {
+  text-decoration: none;
 }
