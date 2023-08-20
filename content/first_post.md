@@ -1,6 +1,6 @@
 ---
 title: First Post
-date: 2023-07-24 19:04:27
+date: 2023-08-19 21:27:41
 ---
 
 [First post](https://everything2.com/?node=first+post)!
