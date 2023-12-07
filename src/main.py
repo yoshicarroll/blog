@@ -1,14 +1,16 @@
+#!python3
+
 import os
-from pprint import pprint
 import re
 import shutil
-import unicodedata
+from pprint import pprint
 
+import unicodedata
+import yaml
 from jinja2 import Environment, FileSystemLoader
 import markdown
 from markdown.extensions.wikilinks import WikiLinkExtension
 from markdown_plain_text.extention import convert_to_plain_text
-import yaml
 
 
 def slugify(value):
@@ -51,7 +53,7 @@ def convert_md_to_html(body_md):
         slugified_label = slugify(label)
         return f'{base}{slugified_label}{end}'
     
-    body_html = markdown.markdown(body_md, extensions=['fenced_code', WikiLinkExtension(build_url=build_url)])
+    body_html = markdown.markdown(body_md, extensions=['attr_list', 'fenced_code', WikiLinkExtension(build_url=build_url)])
     return body_html
 
 def render_template(template_path, output_path, variables):
