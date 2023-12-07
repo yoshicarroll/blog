@@ -9,7 +9,8 @@ A vector measures direction relative to current position and speed of travel for
 
 For example, we might have a project to improve the performance of a system. We don’t know what’s possible, how long it will take to achieve what kinds of improvements, or how many people the project will require. Goals and targets aren’t useful.
 
-Instead we can allocate a certain number of people to the project, set them off in the direction of improving performance, and check in often to see how they’re doing. The first step will be to measure the existing system performance so that we can track improvements. After a couple of weeks we check the metrics and based on what we see decide what to do.  
+Instead we can allocate a certain number of people to the project, set them off in the direction of improving performance, and check in often to see how they’re doing. The first step will be to measure the existing system performance so that we can track improvements. After a couple of weeks we check the metrics and based on what we see decide what to do.
+
 - If progress is acceptable we might change nothing and let the project keep going.
 - If progress not acceptable but, the team tells us they can move faster with more resources we might add people to the project.
 - If progress is better than expected, we might remove people.
@@ -19,10 +20,11 @@ In another two weeks we check again.
 We are still very much in control of the project. We’re just repeatedly making decisions based on current reality instead of imagined futures.
 
 --
-## References
-Dave Snowden (2023). Navigating Deeper into Complexity with Estuarine Mapping - Dave Snowden on Rebel Astronaut
-https://www.youtube.com/watch?v=47uaDW9hI5U
 
-> We talk about vector targets. A vector measures direction and speed of travel for consumption of energy. So it's still a measurement system. But if [the context is] Complex, OKRs will actually produce perverse incentives. And if you look at it, OKRs get more and more complicated as they try and deal with reality. OKRs work for some circumstances. 
+## References
+
+Dave Snowden (2023). [Navigating Deeper into Complexity with Estuarine Mapping - Dave Snowden on Rebel Astronaut](https://www.youtube.com/watch?v=47uaDW9hI5U){: target="\_blank" }
+
+> We talk about vector targets. A vector measures direction and speed of travel for consumption of energy. So it's still a measurement system. But if [the context is] Complex, OKRs will actually produce perverse incentives. And if you look at it, OKRs get more and more complicated as they try and deal with reality. OKRs work for some circumstances.
 
 > I'll give an example. This is a medical one. In the moment in Bellingham Hospital in the States, they import Canadian doctors for certain operations because the risk of death is so high American surgeons will not operate because they want to appear on the right lists. That's an example of a perverse incentive. And you see the same in OKRs in Agile.
